@@ -8,9 +8,17 @@ app.get('/countries/:host.json', function(req, res) {
 
     var data = reader.lookup(req.params.host);
 
-    var countryCode = {iso_code: data.country.iso_code};
+    var country1 = {
+      language: 'en',
+      name: data.country.names.en,
+      geoname_id: data.country.geoname_id,
+      iso_code: data.country.iso_code
+    };
 
-    res.json(countryCode);
+    res.json([{
+      country: country1,
+      host: req.params.host
+    }]);
 });
 
-app.listen(3000);
+module.exports = app;
