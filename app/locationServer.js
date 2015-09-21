@@ -7,8 +7,10 @@ app.get('/countries/:host.json', function(req, res) {
     var reader = new MMDBReader('./resources/GeoLite2-Country.mmdb');
 
     var data = reader.lookup(req.params.host);
-    res.json(data);
 
+    var countryCode = {iso_code: data.country.iso_code};
+
+    res.json(countryCode);
 });
 
 app.listen(3000);
