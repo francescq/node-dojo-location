@@ -1,3 +1,5 @@
+var all_files = ['*.js', 'app/*.js', 'app/**/*.js', 'test/**/*.js'];
+
 module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
@@ -12,14 +14,14 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		watch: {
 			scripts: {
-				files: ['*.js', 'app/*.js', 'app/**/*.js', 'test/*.js'],
+				files: all_files,
 				tasks: ['default'],
-				options: {spawn: false}
+				options: {spawn: true}
 			}
 		},
 
 		jshint: {
-			all: ['*.js', 'app/*.js', 'app/**/*.js', 'test/*.js']
+			all: all_files
 		},
 
 		mochaTest: {

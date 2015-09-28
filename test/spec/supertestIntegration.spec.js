@@ -25,7 +25,7 @@ describe('GET /api/countries/:host', function () {
                     return done(error);
                 }
                 expect(response.body).to.be.an('Array');
-                expect(response.body).to.deep.equal(expected_response)
+                expect(response.body).to.deep.equal(expected_response);
                 done();
             });
     });
