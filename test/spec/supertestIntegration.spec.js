@@ -31,7 +31,7 @@ describe('GET /api/countries/:host', function () {
                 done();
             });
         });
-    })
+    });
 
     describe('when it can not find the host', function(){
         it('should respond with a 404 and error', function(){
@@ -51,7 +51,7 @@ describe('GET /api/countries/:host', function () {
                     return done(error);
                 }
                 expect(response.body).to.be.an('Array');
-                expect(response.body).to.deep.equal(expected_response)
+                expect(response.body).to.deep.equal(expected_response);
                 done();
             });
         });
@@ -88,7 +88,7 @@ describe('GET /api/countries/:host', function () {
                     return done(error);
                 }
                 expect(response.body).to.be.an('Array');
-                expect(response.body).to.deep.equal(expected_response)
+                expect(response.body).to.deep.equal(expected_response);
                 done();
             });
         });
