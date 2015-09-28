@@ -4,16 +4,25 @@ var Controller = function(serializer){
   this.serializer = serializer;
 
   this.get = function(req, res) {
+    var ip = req.params.host;
     var reader = new MMDBReader('./resources/GeoLite2-Country.mmdb');
 
-    var data = reader.lookup(req.params.host);
+    var data = reader.lookup(ip);
 
-    var country1 = serializer.dump(data);
+    if(!!data){
+      var country1 = serializer.dump(data);
 
-    res.json([{
-      country: country1,
-      host: req.params.host
-    }]);
+      res.json([{
+        country: country1,
+        host: ip
+      }]);
+    } else {
+      res.status(404);
+      res.json({
+        'host': ip,
+        'error': "The addess " + ip + " is not on the database"
+      });
+    }
   };
 };
 
