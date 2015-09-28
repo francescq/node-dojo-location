@@ -4,25 +4,21 @@ var Controller = function(serializer){
   this.serializer = serializer;
 
   this.get = function(req, res) {
-    var ip = req.params.host;
+    var ips = req.params.host.split(',');
     var reader = new MMDBReader('./resources/GeoLite2-Country.mmdb');
 
-    var data = reader.lookup(ip);
+    res.json(ips.map(function(ip){
+      var data = reader.lookup(ip);
 
-    if(!!data){
-      var country1 = serializer.dump(data);
-
-      res.json([{
-        country: country1,
-        host: ip
-      }]);
-    } else {
-      res.status(404);
-      res.json({
-        'host': ip,
-        'error': "The addess " + ip + " is not on the database"
-      });
-    }
+      if(!!data){
+        return { country: serializer.dump(data), host: ip };
+      } else {
+        return {
+          'host': ip,
+          'error': "The addess " + ip + " is not on the database"
+        };
+      }
+    }));
   };
 };
 
