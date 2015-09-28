@@ -12,7 +12,7 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		watch: {
 			scripts: {
-				files: ['*.js', 'lib/*.js', 'test/*.js'],
+				files: ['*.js', 'app/*.js', 'app/**/*.js', 'test/*.js'],
 				tasks: ['default'],
 				options: {spawn: false}
 			}

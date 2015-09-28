@@ -6,7 +6,7 @@ var Serializer = function(){
       geoname_id: data.country.geoname_id,
       iso_code: data.country.iso_code
     };
-  }
-}
+  };
+};
 
 module.exports = Serializer;

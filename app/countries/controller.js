@@ -14,7 +14,7 @@ var Controller = function(serializer){
       country: country1,
       host: req.params.host
     }]);
-  }
-}
+  };
+};
 
 module.exports = Controller;

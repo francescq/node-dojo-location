@@ -1,2 +1,2 @@
-var app = require("./app/locationServer")
-app.listen(3000)
+var app = require("./app/locationServer");
+app.listen(3000);
